@@ -1,0 +1,57 @@
+def menu():
+    print("""
+    Welcome
+    Rock-Paper-Scissors
+    Rock:R
+    Paper:P
+    Scissors:S
+    To quit:Q
+    """)
+# X represents player choice 
+# Y represent PC's Choice
+def game(X,Y):
+
+    outcomes={"RS": "You win", "SP": "You win", "PR": "You win",
+                "SR": "PC wins", "PS": "PC wins", "RP": "PC wins"}
+    if X==Y:
+        return "draw"
+    else:
+        return outcomes[X+Y]
+import random
+
+def main():
+    menu()
+    player=0
+    PC=0
+
+    while True:
+        print(f"your score: {player}\nPC's score: {PC}")
+        user_input=input("your answer (or 'Q' to quit): ").upper()
+
+        if user_input=="Q":
+            print("you have exited the game")
+            break
+
+        elif user_input not in ["R", "P", "S"]:
+            print("invalid answer")
+            continue
+
+        pc_input=random.choice(["R", "P", "S"])
+
+        result=game(user_input,pc_input)
+
+        if "You win" == result:
+            player+=1
+        elif "PC wins" == result:
+            PC+=1
+
+main()
+        
+
+
+
+
+
+
+
+
